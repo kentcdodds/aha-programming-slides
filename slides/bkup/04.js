@@ -7,18 +7,20 @@ const phil = {
   name: {honorific: 'Dr.', first: 'Philip', last: 'Rodriquez'},
   username: 'philipr',
 }
-const getDisplayName = (
+
+function getDisplayName(
   user,
   {includeHonorific = false, includeUsername = false} = {},
-) =>
-  [
-    includeHonorific ? user.name.honorific : null,
-    user.name.first,
-    user.name.last,
-    includeUsername ? `(${user.username})` : null,
-  ]
-    .filter(Boolean)
-    .join(' ')
+) {
+  let displayName = `${user.name.first} ${user.name.last}`
+  if (includeHonorific) {
+    displayName = `${user.name.honorific} ${displayName}`
+  }
+  if (includeUsername) {
+    displayName = `${displayName} (${user.username})`
+  }
+  return displayName
+}
 
 // navigation.js
 // ...

@@ -7,7 +7,8 @@ const phil = {
   name: {honorific: 'Dr.', first: 'Philip', last: 'Rodriquez'},
   username: 'philipr',
 }
-const getDisplayName = (
+
+function getDisplayName(
   user,
   {
     includeHonorific = false,
@@ -15,17 +16,23 @@ const getDisplayName = (
     firstInitial = false,
     onlyUsername = false,
   } = {},
-) =>
-  onlyUsername
-    ? user.username
-    : [
-        includeHonorific ? user.name.honorific : null,
-        firstInitial ? `${user.name.first.slice(0, 1)}.` : user.name.first,
-        user.name.last,
-        includeUsername ? `(${user.username})` : null,
-      ]
-        .filter(Boolean)
-        .join(' ')
+) {
+  let first = user.name.first
+  if (firstInitial) {
+    first = `${first.slice(0, 1)}.`
+  }
+  let displayName = `${first} ${user.name.last}`
+  if (includeHonorific) {
+    displayName = `${user.name.honorific} ${displayName}`
+  }
+  if (includeUsername) {
+    displayName = `${displayName} (${user.username})`
+  }
+  if (onlyUsername) {
+    displayName = user.username
+  }
+  return displayName
+}
 
 // navigation.js
 // ...

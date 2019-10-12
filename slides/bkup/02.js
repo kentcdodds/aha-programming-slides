@@ -6,6 +6,7 @@ const phil = {
   name: {honorific: 'Dr.', first: 'Philip', last: 'Rodriquez'},
   username: 'philipr',
 }
+
 const getDisplayName = user => `${user.name.first} ${user.name.last}`
 
 // navigation.js
