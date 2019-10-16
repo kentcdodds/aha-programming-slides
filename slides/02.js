@@ -23,6 +23,3 @@ console.log(profileDisplayName)
 const cardDisplayName = `${phil.name.first} ${phil.name.lest}`
 console.log(cardDisplayName)
 // ...
-
-// Note the bug in `name.lest` (bug could be a business logic bug that TypeScript
-// wont save you from)
